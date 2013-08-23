@@ -26,7 +26,7 @@ on your network.
 %package devel
 Summary: Libraries and header files for the libpcap library
 Group: Development/Libraries
-Requires: %{name} = %{epoch}:%{version}-%{release}
+Requires: %{name} = %{version}-%{release}
 
 %description devel
 Libpcap provides a portable framework for low-level network
