@@ -7,7 +7,6 @@ License: BSD with advertising
 URL: http://www.tcpdump.org
 BuildRequires: bison
 BuildRequires: flex
-BuildRequires: bluez-libs-devel
 
 Source: %{name}-%{version}.tar.gz
 
