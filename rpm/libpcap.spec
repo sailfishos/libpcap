@@ -1,5 +1,5 @@
 Name: libpcap
-Version: 1.5.3
+Version: 1.8.1
 Release: 1
 Summary: A system-independent interface for user-level packet capture
 Group: Development/Libraries
@@ -62,12 +62,12 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libpcap.a
 
 %files
 %defattr(-,root,root)
-%doc LICENSE README CHANGES CREDITS
+%doc LICENSE
 %{_libdir}/libpcap.so.*
-%{_mandir}/man7/pcap*.7*
 
 %files devel
 %defattr(-,root,root)
+%doc README CHANGES CREDITS
 %{_bindir}/pcap-config
 %{_includedir}/pcap*.h
 %{_includedir}/pcap
@@ -75,3 +75,4 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libpcap.a
 %{_mandir}/man1/pcap-config.1*
 %{_mandir}/man3/pcap*.3*
 %{_mandir}/man5/pcap*.5*
+%{_mandir}/man7/pcap*.7*
