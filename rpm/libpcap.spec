@@ -49,7 +49,7 @@ sed -i -e 's|-fpic|-fPIC|g' configure
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
-%configure
+%configure --disable-bluetooth
 make %{?_smp_mflags}
 
 %install
