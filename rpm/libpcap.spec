@@ -3,7 +3,7 @@ Version: 1.8.1
 Release: 1
 Summary: A system-independent interface for user-level packet capture
 Group: Development/Libraries
-License: BSD with advertising
+License: BSD
 URL: http://www.tcpdump.org
 BuildRequires: bison
 BuildRequires: flex
