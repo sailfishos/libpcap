@@ -1,14 +1,12 @@
-Name: libpcap
-Version: 1.8.1
-Release: 1
+Name:    libpcap
 Summary: A system-independent interface for user-level packet capture
-Group: Development/Libraries
+Version: 1.9.1
+Release: 1
 License: BSD
-URL: http://www.tcpdump.org
+URL:     http://www.tcpdump.org
+Source:  %{name}-%{version}.tar.gz
 BuildRequires: bison
 BuildRequires: flex
-
-Source: %{name}-%{version}.tar.gz
 
 %description
 Libpcap provides a portable framework for low-level network
@@ -24,7 +22,6 @@ on your network.
 
 %package devel
 Summary: Libraries and header files for the libpcap library
-Group: Development/Libraries
 Requires: %{name} = %{version}-%{release}
 
 %description devel
@@ -40,7 +37,7 @@ This package provides the libraries, include files, and other
 resources needed for developing libpcap applications.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
+%autosetup -n %{name}-%{version}/%{name}
 
 #sparc needs -fPIC
 %ifarch %{sparc}
@@ -50,11 +47,10 @@ sed -i -e 's|-fpic|-fPIC|g' configure
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 %configure --disable-bluetooth
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-rm -f $RPM_BUILD_ROOT%{_libdir}/libpcap.a
+%make_install
 
 %post -p /sbin/ldconfig
 
@@ -62,16 +58,17 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libpcap.a
 
 %files
 %defattr(-,root,root)
-%doc LICENSE
+%license LICENSE
 %{_libdir}/libpcap.so.*
 
 %files devel
 %defattr(-,root,root)
-%doc README CHANGES CREDITS
+%doc README.md CHANGES CREDITS
 %{_bindir}/pcap-config
 %{_includedir}/pcap*.h
 %{_includedir}/pcap
 %{_libdir}/libpcap.so
+%{_libdir}/pkgconfig/libpcap.pc
 %{_mandir}/man1/pcap-config.1*
 %{_mandir}/man3/pcap*.3*
 %{_mandir}/man5/pcap*.5*
