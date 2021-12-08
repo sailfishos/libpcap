@@ -1,3 +1,3 @@
 [submodule "libpcap"]
 	path = libpcap
-	url = https://git.sailfishos.org/mirror/libpcap.git
+	url = https://github.com/sailfishos-mirror/libpcap.git
