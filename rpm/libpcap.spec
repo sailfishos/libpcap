@@ -52,6 +52,8 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
 %install
 %make_install
 
+find %{buildroot} -name \*.a -delete
+
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
