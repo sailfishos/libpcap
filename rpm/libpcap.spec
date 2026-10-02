@@ -1,12 +1,14 @@
 Name:    libpcap
 Summary: A system-independent interface for user-level packet capture
-Version: 1.10.3
+Version: 1.10.7
 Release: 1
 License: BSD
-URL:     http://www.tcpdump.org
+URL:     https://github.com/sailfishos/libpcap
 Source:  %{name}-%{version}.tar.gz
 BuildRequires: bison
 BuildRequires: flex
+BuildRequires: automake
+BuildRequires: autoconf
 
 %description
 Libpcap provides a portable framework for low-level network
@@ -46,6 +48,7 @@ sed -i -e 's|-fpic|-fPIC|g' configure
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing"
+./autogen.sh
 %configure --disable-bluetooth
 %make_build
 
@@ -59,12 +62,10 @@ find %{buildroot} -name \*.a -delete
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %{_libdir}/libpcap.so.*
 
 %files devel
-%defattr(-,root,root)
 %doc README.md CHANGES CREDITS
 %{_bindir}/pcap-config
 %{_includedir}/pcap*.h
